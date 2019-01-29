@@ -1,8 +1,9 @@
 # 迭带器
-from collections.abc import Iterator,Iterable
+from collections.abc import Iterator, Iterable
+
 
 class Company():
-    def __init__(self,employee_list):
+    def __init__(self, employee_list):
         self.employee = employee_list
 
     def __iter__(self):
@@ -10,12 +11,12 @@ class Company():
         return MyIterator(self.employee)
 
 
-
 class MyIterator():
     '''
     实现一个迭带器
     '''
-    def __init__(self,list):
+
+    def __init__(self, list):
         self.iter_list = list
         self.index = 0
 
@@ -30,11 +31,12 @@ class MyIterator():
         self.index += 1
         return word
 
+
 if __name__ == '__main__':
 
-    my = Company(["li","yyx","lxh"])
+    my = Company(["li", "yyx", "lxh"])
     my = iter(my)
-    print(isinstance(my,Iterator))
+    print(isinstance(my, Iterator))
     while True:
         try:
             print(next(my))
@@ -53,5 +55,3 @@ if __name__ == '__main__':
     当for发现没有__iter__但是有__getitem__的时候，会从0开始依次读取相应的下标，
     直到发生IndexError为止，这是一种旧的迭代协议。
     '''
-
-
